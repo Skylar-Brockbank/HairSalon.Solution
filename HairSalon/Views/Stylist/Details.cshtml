@@ -1,16 +1,21 @@
 <h1>@Model.Name</h1>
-<p>@Model.Specialties</p>
+<div class ="stylistInfo">
+  <h6>Specialties</h6>
+  <p>@Model.Specialties</p>
+</div>
 @using HairSalon.Models;
 
 @if(Model.Clients.Count !=0)
 {
   <h3>ClientList</h3>
-  <div class="ListContainer">
+  <div class="listContainer">
     @foreach(Client c in Model.Clients)
     {
-      <li>c.Name</li>
+      <li>@c.Name</li>
     }
   </div>
 }
 
-@Html.ActionLink("Add a new Client", "Create", "Client")
+@Html.ActionLink("Add a new Client", "Create", "Client", new{id= Model.StylistId})
+<br>
+@Html.ActionLink("Return to All Stylists", "Index", "Stylist")

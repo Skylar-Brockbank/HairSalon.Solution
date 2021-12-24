@@ -2,7 +2,9 @@
 
 @if(@Model.Count == 0)
 {
-  <p>There are no stylists to show</p>
+  <h1>There are no stylists to show</h1>
+}else{
+  <h1>All Stylists</h1>
 }
 
 @foreach(Stylist s in Model)
@@ -11,3 +13,4 @@
 }
 
 @Html.ActionLink("Add a new Stylist", "Create", "Stylist")
+@Html.ActionLink("See all clients", "Index", "Client")
