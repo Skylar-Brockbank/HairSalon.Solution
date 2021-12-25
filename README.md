@@ -46,3 +46,7 @@ _A hair salon application that uses one to many relationships to assign clients 
 
 *[MIT](https://opensource.org/licenses/MIT) Licenced
 *Copyright (c) _2021_ _Skylar Brockbank_
+
+## Database Diagram
+
+![diagram](databaseDiagram.png)
