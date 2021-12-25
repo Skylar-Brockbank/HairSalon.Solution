@@ -43,5 +43,48 @@ namespace HairSalon.Controllers
       return RedirectToAction("Details","Stylist", new {id=newClient.StylistId});
     
     }
+    public ActionResult Details(int id)
+    {
+      Client input = _db.Clients.FirstOrDefault(client => client.ClientId==id);
+      return View(input);
+    }
+    public ActionResult Edit(int id)
+    {
+      ViewBag.StylistDropdown = new List<SelectListItem> {};
+      List<Stylist> CheckList = _db.Stylists.ToList();
+      foreach(Stylist s in CheckList)
+      {
+        if(s.StylistId == id)
+        {
+          ViewBag.StylistDropdown.Add(new SelectListItem{Text = $"{s.Name}",Value=$"{s.StylistId}",Selected = true});
+        }else{
+          ViewBag.StylistDropdown.Add(new SelectListItem{Text = $"{s.Name}",Value=$"{s.StylistId}"});
+        }
+
+      }
+      var input = _db.Clients.FirstOrDefault(client => client.ClientId==id);
+      return View(input);
+    }
+    [HttpPost]
+    public ActionResult Edit(Client returningC)
+    {
+      _db.Entry(returningC).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Details","Client", new {id=returningC.ClientId});
+    }
+    public ActionResult Delete(int id)
+    {
+      ViewBag.id = id;
+      var input = _db.Clients.FirstOrDefault(client => client.ClientId==id);
+      return View(input);
+    }
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var target = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      _db.Remove(target);
+      _db.SaveChanges();
+      return RedirectToAction("Details", "Stylist", new  {id = target.StylistId});
+    }
   }
 }
