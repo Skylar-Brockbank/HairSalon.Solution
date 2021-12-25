@@ -2,11 +2,12 @@
     Layout = "_Layout";
 }
 @model HairSalon.Models.Client
-<h1>Enter New Client Name</h1>
+<h1>Edit this Client info for @Html.DisplayFor(model => model.Name)</h1>
 @using (Html.BeginForm())
 {
+    @Html.HiddenFor(model => model.ClientId)
     @Html.LabelFor(model => model.Name)
     @Html.TextBoxFor(model => model.Name)
     @Html.DropDownListFor(model => model.StylistId, (List<SelectListItem>) ViewBag.StylistDropdown)
-    <input type="submit" value="Add New Client" />
+    <input type="submit" value="Update" />
 }

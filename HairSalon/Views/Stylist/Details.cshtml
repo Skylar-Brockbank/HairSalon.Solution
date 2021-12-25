@@ -1,3 +1,6 @@
+@{
+    Layout = "_Layout";
+}
 <h1>@Model.Name</h1>
 <div class ="stylistInfo">
   <h6>Specialties</h6>
@@ -11,7 +14,7 @@
   <div class="listContainer">
     @foreach(Client c in Model.Clients)
     {
-      <li>@c.Name</li>
+      <li>@Html.ActionLink($"{c.Name}","Details","Client", new {id = c.ClientId})</li>
     }
   </div>
 }
