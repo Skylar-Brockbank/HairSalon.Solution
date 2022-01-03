@@ -20,7 +20,7 @@ _A hair salon application that uses one to many relationships to assign clients 
 
 * _Click the green "Code" button and Download Zip _
 * _Extract the contents of the zip file to a folder on your machine_
-* _Import the included .sql file_
+* _Rename and Import the included .sql file (This will be the name of your database later)_
 * _Navigate to the HairSalon Directory and `touch appsettings.json` and fill with the following_
 ```
 {
